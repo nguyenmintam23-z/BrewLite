@@ -2,9 +2,7 @@
 
 ## 1. Bối cảnh nghiệp vụ
 
-BrewLite là [mô tả ngắn về hệ thống và đối tượng sử dụng].
-Hệ thống hỗ trợ quy trình [liệt kê các bước chính].
-Vấn đề hiện tại mà hệ thống hướng tới giải quyết là [mô tả vấn đề].
+BrewLite là website bán đồ uống trực tuyến dành cho khách hàng có nhu cầu xem và đặt mua đồ uống. Hệ thống hỗ trợ quy trình xem menu → xem chi tiết đồ uống → chọn tùy chọn (size, mức đường, mức đá, topping) → thêm vào giỏ hàng → xem/cập nhật giỏ hàng → đặt đơn hàng → chọn phương thức thanh toán → thanh toán → theo dõi đơn hàng. Vấn đề hiện tại mà hệ thống hướng tới giải quyết là giúp khách hàng thuận tiện trong việc lựa chọn, tùy chỉnh, đặt và thanh toán đồ uống trực tuyến, đồng thời giảm sự bất tiện và thời gian khi phải đặt hàng trực tiếp tại cửa hàng.
 
 ## 2. Stakeholder
 
