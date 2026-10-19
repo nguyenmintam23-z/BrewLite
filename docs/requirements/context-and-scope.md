@@ -9,11 +9,11 @@ BrewLite là website bán đồ uống trực tuyến dành cho khách hàng có
 | Stakeholder | Vai trò | Mục tiêu/kỳ vọng | Mối quan tâm |
 |---|---|---|---|
 | Khách hàng | Người sử dụng website để xem và đặt đồ uống | Dễ dàng xem menu, tùy chỉnh đồ uống, đặt hàng, thanh toán và theo dõi đơn | Giao diện dễ sử dụng, thông tin đặt đồ uống chính xác, đặt hàng nhanh, thanh toán thuận tiện |
-| Nhân viên quầy | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
-| Quản lý cửa hàng | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
-| Giảng viên/người nghiệm thu | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
-| Nhóm phát triển | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
-| Đơn vị thanh toán | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
+| Nhân viên quầy | Tiếp nhận, chuẩn bị và cập nhật trạng thái đơn | Nhận đơn chính xác và xử lý đơn nhanh chóng | Thông tin đơn rõ ràng, hạn chế sai sót, dễ cập nhật trạng thái đơn và không bị trễ thông báo |
+| Quản lý cửa hàng | quản lý hoạt động bán hàng và theo dõi đơn hàng | Quản lý đơn hàng hiệu quả, theo dõi tình hình kinh doanh | Doanh thu, số lượng đơn, trạng thái đơn hàng và hoạt động của cửa hàng |
+| Giảng viên/người nghiệm thu | Đánh giá hệ thống và kết quả thực hiện | Hệ thống đáp ứng yêu cầu nghiệp vụ và đúng phạm vi đề tài | Tính đầy đủ, chính xác, tính khả dụng, và chất lượng của hệ thống |
+| Nhóm phát triển | Phân tích, thiết kế, xây dựng và bảo trì hệ thống | Hoàn thành hệ thống đúng yêu cầu tiến độ | Yêu cầu nghiệp vụ, thiết kế hệ thống, chức năng, dữ liệu và khả năng triển khai |
+| Đơn vị thanh toán | Cung cấp/ xử lý dịch vụ thanh toán cho dơn hàng | Đảm bảo giao dịch thanh toán được xử lý chính xác | Bảo mật dịch vụ, tính chính xác của thanh toán và trạng thái giao dịch |
 
 ## 3. Phạm vi MVP (In-scope)
 
