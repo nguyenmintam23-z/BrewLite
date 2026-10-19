@@ -8,7 +8,7 @@ BrewLite là website bán đồ uống trực tuyến dành cho khách hàng có
 
 | Stakeholder | Vai trò | Mục tiêu/kỳ vọng | Mối quan tâm |
 |---|---|---|---|
-| Khách hàng | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
+| Khách hàng | Người sử dụng website để xem và đặt đồ uống | Dễ dàng xem menu, tùy chỉnh đồ uống, đặt hàng, thanh toán và theo dõi đơn | Giao diện dễ sử dụng, thông tin đặt đồ uống chính xác, đặt hàng nhanh, thanh toán thuận tiện |
 | Nhân viên quầy | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
 | Quản lý cửa hàng | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
 | Giảng viên/người nghiệm thu | [Vai trò] | [Kỳ vọng] | [Mối quan tâm] |
