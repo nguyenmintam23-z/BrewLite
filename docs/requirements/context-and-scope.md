@@ -1,19 +1,24 @@
 # Bối cảnh và phạm vi BrewLite
 
 ## 1. Bối cảnh nghiệp vụ
-BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy chỉnh đồ uống, quản lý giỏ hàng, đặt đơn, thanh toán mô phỏng và theo dõi trạng thái đơn hàng. Hệ thống cũng hỗ trợ nhân viên tiếp nhận, chuẩn bị và cập nhật đơn; quản lý cửa hàng theo dõi hoạt động bán hàng. BrewLite hướng tới việc giúp khách hàng đặt đồ uống thuận tiện hơn, giảm thời gian chờ tại quầy và giúp cửa hàng xử lý đơn rõ ràng, hạn chế sai sót. Trong phạm vi bài tập, thanh toán được mô phỏng và không xử lý giao dịch tiền thật.
+
+BrewLite là website bán đồ uống trực tuyến, phục vụ khách hàng, nhân viên quầy và quản lý cửa hàng. Khách hàng có thể xem menu và chi tiết sản phẩm, tùy chỉnh đồ uống, quản lý giỏ hàng, đặt đơn, thanh toán mô phỏng và theo dõi trạng thái đơn. Nhân viên đăng nhập để tiếp nhận, chuẩn bị và cập nhật đơn hàng. Quản lý đăng nhập để theo dõi đơn, quản lý đồ uống và nhân viên, đồng thời xem báo cáo doanh thu.
+
+Hệ thống hướng tới việc giúp khách đặt đồ uống thuận tiện hơn, giảm thời gian chờ tại quầy và giúp cửa hàng xử lý đơn rõ ràng, hạn chế sai sót. Trong phạm vi bài tập, thanh toán được mô phỏng và không xử lý giao dịch tiền thật.
 
 ## 2. Stakeholder
+
 | Stakeholder | Vai trò | Mục tiêu/kỳ vọng | Mối quan tâm |
 |---|---|---|---|
-| Khách hàng | Người sử dụng website để xem và đặt đồ uống | Dễ dàng xem menu, tùy chỉnh đồ uống, đặt hàng, thanh toán và theo dõi đơn | Giao diện dễ sử dụng, thông tin đặt đồ uống chính xác, đặt hàng nhanh, thanh toán thuận tiện |
-| Nhân viên quầy | Tiếp nhận và xử lý đơn hàng từ khách | Nhận đơn chính xác và xử lý đơn nhanh chóng | Thông tin đơn rõ ràng, hạn chế sai sót, dễ xem đơn mới và cập nhật trạng thái chính xác |
-| Quản lý cửa hàng | Quản lý đồ uống, đơn hàng, nhân viên và hoạt động kinh doanh | Quản lý cửa hàng hiệu quả, theo dõi tình hình kinh doanh | Đơn hàng, sản phẩm, nhân viên và doanh thu|
-| Giảng viên/người nghiệm thu | Đánh giá hệ thống và kết quả đồ án | Hệ thống đáp ứng yêu cầu và tiêu chí nghiệm thu của đề bài và đúng phạm vi đề tài | Tính đầy đủ, chính xác, tính khả dụng, và khả năng hoạt động của hệ thống |
-| Nhóm phát triển | Phân tích, xây dựng, kiểm thử và triển khai hệ thống đúng tiến dộ | Hoàn thành hệ thống đúng yêu cầu và tiến độ | Yêu cầu nghiệp vụ, thiết kế hệ thống, chức năng, dữ liệu và khả năng triển khai |
-| Đơn vị thanh toán | Dịch vụ thanh toán mô phỏng   | nhận yêu cầu thanh toán và trả về kết quả thành công/thất bại | Bảo mật dịch vụ, tính chính xác của thanh toán và trạng thái giao dịch |
+| Khách hàng | Xem và đặt đồ uống trên website | Dễ chọn và tùy chỉnh món, đặt hàng, thanh toán và theo dõi đơn thuận tiện | Giao diện dễ dùng; menu, giá và tùy chọn chính xác; giỏ hàng và trạng thái đơn rõ ràng; thông tin cá nhân được bảo vệ |
+| Nhân viên quầy | Đăng nhập bằng tài khoản được cấp; tiếp nhận, chuẩn bị và cập nhật trạng thái đơn | Nhận đúng thông tin đơn và xử lý đơn nhanh chóng | Dễ xem đơn mới và chi tiết món; cập nhật trạng thái chính xác; chỉ truy cập chức năng phù hợp vai trò |
+| Quản lý cửa hàng | Đăng nhập bằng tài khoản quản lý; quản lý hoạt động bán hàng | Quản lý menu và nhân viên, theo dõi đơn và tình hình kinh doanh | Dữ liệu doanh thu và đơn hàng chính xác; thao tác quản trị được phân quyền và bảo vệ |
+| Giảng viên/người nghiệm thu | Đánh giá hệ thống và kết quả thực hiện | Hệ thống đáp ứng yêu cầu, tiêu chí nghiệm thu và phạm vi đề tài | Tính đầy đủ, chính xác, khả dụng; tài liệu và chức năng có thể kiểm chứng |
+| Nhóm phát triển | Phân tích, thiết kế, xây dựng, kiểm thử và triển khai hệ thống | Hoàn thành hệ thống đúng yêu cầu và tiến độ | Yêu cầu nghiệp vụ rõ ràng; thiết kế, dữ liệu, phân quyền và mã nguồn nhất quán; hệ thống có thể chạy và triển khai |
+| Dịch vụ thanh toán mô phỏng | Nhận yêu cầu thanh toán thử nghiệm và trả kết quả | Trả về kết quả thành công hoặc thất bại để kiểm thử luồng đặt hàng | Kết quả và trạng thái giao dịch nhất quán; không xử lý tiền thật |
 
 ## 3. Phạm vi MVP (In-scope)
+
 - Khách hàng đăng ký và đăng nhập; nhân viên và quản lý đăng nhập bằng tài khoản được cấp hoặc tài khoản mẫu được tạo sẵn.
 - Phân quyền theo vai trò `CUSTOMER`, `STAFF` và `MANAGER`; backend kiểm tra quyền khi gọi chức năng được bảo vệ.
 - Khách hàng xem menu, tìm kiếm và xem chi tiết đồ uống.
@@ -25,12 +30,14 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 - Quản lý thêm, sửa, ẩn hoặc xóa đồ uống; quản lý tài khoản nhân viên; xem báo cáo doanh thu cơ bản.
 
 ## 4. Phạm vi mở rộng
+    
 - Tích hợp cổng thanh toán thật sau khi MVP hoàn tất và được cho phép.
 - Tích điểm thành viên, mã khuyến mãi và chương trình chăm sóc khách hàng.
 - Quản lý nhiều chi nhánh, tồn kho nâng cao và báo cáo phân tích chuyên sâu.
 - Thông báo đẩy hoặc SMS về trạng thái đơn.
 
 ## 5. Ngoài phạm vi (Out-of-scope)
+
 - Xử lý giao dịch tiền thật hoặc lưu thông tin thẻ ngân hàng.
 - Giao hàng thực tế, định vị shipper hoặc theo dõi lộ trình giao hàng.
 - Tích hợp hệ thống kế toán, hóa đơn điện tử hoặc phần mềm bán hàng bên thứ ba.
@@ -38,6 +45,7 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 - Vận hành chuỗi nhiều cửa hàng trong phiên bản MVP.
 
 ## 6. Giả định
+
 - Nhóm cung cấp dữ liệu mẫu về đồ uống, giá, size và topping.
 - Người dùng có kết nối Internet và trình duyệt hiện đại để truy cập website.
 - Khách hàng tự đăng ký tài khoản; tài khoản nhân viên/quản lý do quản lý tạo hoặc được seed sẵn cho môi trường demo.
@@ -46,6 +54,7 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 - MVP mô hình hóa một cửa hàng và các trạng thái đơn cơ bản.
 
 ## 7. Ràng buộc
+
 - Công nghệ bắt buộc: Next.js cho frontend, NestJS cho backend và PostgreSQL cho dữ liệu.
 - Frontend được thiết kế theo hướng mobile-first/PWA.
 - Hệ thống phải quản lý xác thực và phân quyền phù hợp với vai trò khách hàng, nhân viên và quản lý.
