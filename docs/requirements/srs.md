@@ -4,7 +4,7 @@
 
 BrewLite là website đặt đồ uống. Khách có thể xem menu mà chưa cần đăng nhập; khách cần đăng ký/đăng nhập bằng số điện thoại trước khi đặt đơn. MVP hỗ trợ tùy chỉnh đồ uống, quản lý giỏ hàng, đặt đơn, thanh toán mô phỏng và theo dõi đơn. Nhân viên xử lý đơn; quản lý quản lý đồ uống, tài khoản nhân viên và xem báo cáo cơ bản. Hệ thống dùng Next.js, NestJS và PostgreSQL.
 
-Thanh toán trong MVP chỉ mô phỏng, không xử lý tiền thật. Sơ đồ use case tổng quát nằm tại [`docs/diagrams/brewlite-usecase.drawio`](../diagrams/brewlite-usecase.drawio), trang **Use case tổng quát**. Sơ đồ use case đặt và thanh toán nằm ở trang thứ hai.
+Thanh toán trong MVP chỉ mô phỏng, không xử lý tiền thật. Sơ đồ use case tổng quát nằm tại [`docs/diagrams/brewlite-usecase.drawio`](../diagrams/brewlite-usecase.drawio), trang Use case tổng quát. Sơ đồ use case đặt và thanh toán nằm ở trang thứ hai.
 
 ## 2. Quy ước ưu tiên MoSCoW
 
@@ -78,3 +78,4 @@ Sơ đồ tổng quát thể hiện các actor `CUSTOMER`, `STAFF`, `MANAGER`, d
 - Đơn và phần tồn kho được giữ phải ghi nhất quán trong transaction. Khi nhân viên hủy đơn chưa chuẩn bị, phần tồn kho đã giữ được hoàn lại.
 - Trạng thái đơn cơ bản: `PENDING_PAYMENT → CONFIRMED → PREPARING → COMPLETED`; đơn chưa chuẩn bị có thể chuyển sang `CANCELLED`. Trạng thái thanh toán: `PENDING`, `SUCCEEDED`, `FAILED`.
 - Báo cáo doanh thu chỉ tính đơn có thanh toán thành công; phạm vi báo cáo là tổng số đơn và tổng doanh thu theo khoảng thời gian.
+ 
