@@ -14,7 +14,7 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 | Đơn vị thanh toán | Dịch vụ thanh toán mô phỏng   | nhận yêu cầu thanh toán và trả về kết quả thành công/thất bại | Bảo mật dịch vụ, tính chính xác của thanh toán và trạng thái giao dịch |
 
 ## 3. Phạm vi MVP (In-scope)
-- Khách hàng đăng ký và đăng nhập; nhân viên và quản lý đăng nhập bằng tài khoản được cấp hoặc tài khoản mẫu được tạo sẵn.
+- Khách hàng đăng ký bằng số điện thoại và mật khẩu, sau đó đăng nhập; nhân viên và quản lý đăng nhập bằng tài khoản được cấp hoặc tài khoản mẫu được tạo sẵn.
 - Phân quyền theo vai trò `CUSTOMER`, `STAFF` và `MANAGER`; backend kiểm tra quyền khi gọi chức năng được bảo vệ.
 - Khách hàng xem menu, tìm kiếm và xem chi tiết đồ uống.
 - Khách hàng chọn size, mức đá, mức đường và topping theo cấu hình sản phẩm.
@@ -40,7 +40,7 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 ## 6. Giả định
 - Nhóm cung cấp dữ liệu mẫu về đồ uống, giá, size và topping.
 - Người dùng có kết nối Internet và trình duyệt hiện đại để truy cập website.
-- Khách hàng tự đăng ký tài khoản; tài khoản nhân viên/quản lý do quản lý tạo hoặc được seed sẵn cho môi trường demo.
+- Khách hàng tự đăng ký tài khoản bằng số điện thoại; tài khoản nhân viên/quản lý do quản lý tạo hoặc được seed sẵn cho môi trường demo.
 - Mỗi tài khoản có một vai trò chính; quyền được kiểm tra ở backend, không chỉ ẩn chức năng trên giao diện.
 - Dịch vụ thanh toán trong MVP là mô phỏng và có thể trả kết quả thành công/thất bại.
 - MVP mô hình hóa một cửa hàng và các trạng thái đơn cơ bản.
