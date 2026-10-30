@@ -1,0 +1,114 @@
+@startuml Sequence_Order_Checkout
+autonumber
+skinparam BoxPadding 10
+skinparam ParticipantPadding 10
+
+actor "Khách hàng\n(CUSTOMER)" as Customer
+participant "Frontend\n(Next.js)" as FE
+participant "Backend\n(NestJS)" as BE
+database "Database\n(PostgreSQL)" as DB
+participant "Mock Payment\nService" as PaymentSvc
+
+title Sơ đồ tuần tự (Sequence Diagram) - UC-01: Đặt và thanh toán đơn hàng
+
+== Bước 1-2: Xem giỏ hàng và đặt hàng ==
+Customer -> FE: Mở giỏ hàng (món, tùy chọn, số lượng, tổng tạm tính)
+activate FE
+Customer -> FE: Chọn "Đặt hàng/Thanh toán"
+FE -> BE: POST /orders/checkout (JWT, cartItems)
+activate BE
+
+== Bước 3: Xác thực và phân quyền ==
+BE -> BE: Xác thực JWT và kiểm tra role CUSTOMER
+alt Phiên hết hạn hoặc token không hợp lệ [A1]
+    BE --> FE: 401 Unauthorized
+    FE --> Customer: Yêu cầu đăng nhập lại
+    alt Đăng nhập thành công
+        Customer -> FE: Đăng nhập lại
+        FE -> BE: POST /orders/checkout (JWT mới, cartItems)
+    else Đăng nhập thất bại hoặc khách dừng
+        FE --> Customer: Kết thúc, không tạo đơn
+    end
+end
+
+== Bước 4-5: Kiểm tra giỏ hàng, tính giá và tạo đơn ==
+BE -> DB: Lấy trạng thái bán, tùy chọn và giá hiện hành
+alt Giỏ rỗng hoặc món/tùy chọn/số lượng không hợp lệ [E1]
+    BE --> FE: 400 Bad Request (lỗi cần sửa)
+    FE --> Customer: Hiển thị lỗi, kết thúc, không tạo đơn
+else Giỏ hàng hợp lệ
+    BE -> BE: Tự tính tổng tiền từ giá hiện hành\n(không tin tổng tiền từ client)
+    opt Giá hoặc nội dung giỏ thay đổi [A2]
+        BE --> FE: 409 Conflict (nội dung và tổng tiền mới)
+        FE --> Customer: Hiển thị tổng tiền mới để xác nhận
+        alt Khách xác nhận
+            Customer -> FE: Xác nhận tiếp tục
+            FE -> BE: POST /orders/checkout (xác nhận tổng mới)
+        else Khách không xác nhận
+            FE --> Customer: Kết thúc, chưa tạo đơn
+        end
+    end
+
+    BE -> DB: BEGIN
+    activate DB
+    BE -> DB: Kiểm tra tồn kho, trạng thái bán (SELECT ... FOR UPDATE)
+    alt Hết hàng, ngừng bán hoặc giá không còn hợp lệ [E2]
+        BE -> DB: ROLLBACK
+        BE --> FE: 409 Conflict (món không thể đặt)
+        FE --> Customer: Yêu cầu cập nhật giỏ hàng, không tạo đơn
+    else Đủ điều kiện
+        BE -> DB: Tạo Order (PENDING_PAYMENT) và giữ tồn kho
+        alt Lỗi ghi đơn hoặc giữ tồn kho [E3]
+            BE -> DB: ROLLBACK
+            BE --> FE: 500 (chưa thể tạo đơn)
+            FE --> Customer: Báo chưa thể tạo đơn
+        else Ghi thành công
+            BE -> DB: COMMIT
+            BE --> FE: 201 Created (orderId, tổng tiền, PENDING_PAYMENT)
+        end
+    end
+    deactivate DB
+end
+deactivate BE
+
+== Bước 6-9: Thanh toán mô phỏng (chỉ khi đơn đã được tạo) ==
+loop Cho đến khi thành công hoặc khách dừng [A3, E5]
+    Customer -> FE: Chọn Ví hoặc Thẻ mô phỏng
+    alt Phương thức không được hỗ trợ [E4]
+        FE --> Customer: Yêu cầu chọn Ví hoặc Thẻ mô phỏng\n(chưa gửi yêu cầu thanh toán)
+    else Phương thức hợp lệ
+        note over FE: Lần thử mới: tạo idempotency key mới\nKiểm tra lại sau E5: dùng lại key cũ
+        FE -> BE: POST /payments (orderId, method, idempotencyKey)
+        activate BE
+        BE -> DB: Tìm payment theo idempotencyKey
+        alt Key đã có kết quả, cùng nội dung [E6]
+            BE --> FE: Trả lại kết quả đã lưu (không tạo attempt trùng)
+        else Key đã dùng với nội dung khác [E7]
+            BE --> FE: 409 Conflict (từ chối, không tạo giao dịch mới)
+        else Key chưa có kết quả
+            BE -> DB: Lưu payment attempt (PENDING)
+            BE -> PaymentSvc: Yêu cầu thanh toán (idempotencyKey, amount)
+            activate PaymentSvc
+            alt Thành công [luồng chính]
+                PaymentSvc --> BE: SUCCEEDED (transactionRef)
+                BE -> DB: Cập nhật payment = SUCCEEDED, Order = CONFIRMED
+                BE --> FE: 200 OK (mã đơn, CONFIRMED)
+                FE --> Customer: Hiển thị đặt hàng thành công
+            else Thất bại [A3]
+                PaymentSvc --> BE: FAILED
+                BE -> DB: Cập nhật payment = FAILED, Order giữ PENDING_PAYMENT
+                BE --> FE: Thanh toán thất bại
+                FE --> Customer: Thông báo lỗi, cho phép thử lại
+            else Timeout hoặc lỗi kỹ thuật [E5]
+                PaymentSvc -->x BE: Không có kết quả
+                BE --> FE: 503 (chưa xử lý được, Order giữ PENDING_PAYMENT)
+                FE --> Customer: Thông báo chưa xử lý được, cho phép kiểm tra lại
+            end
+            deactivate PaymentSvc
+        end
+        deactivate BE
+    end
+end
+
+deactivate FE
+@enduml

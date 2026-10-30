@@ -1,0 +1,107 @@
+@startuml Activity_Order_Checkout
+skinparam defaultTextAlignment center
+skinparam monochrome false
+skinparam shadowing false
+
+title Sơ đồ hoạt động (Activity Diagram) - UC-01: Đặt và thanh toán đơn hàng
+
+start
+
+' Bước 1-2
+:Khách hàng mở giỏ hàng, xem món, tùy chọn, số lượng và tổng tạm tính;
+:Khách hàng chọn "Đặt hàng/Thanh toán";
+
+' Bước 3 - Xác thực và phân quyền (A1)
+if (Phiên đăng nhập hợp lệ và role là CUSTOMER?) then (Không / Hết hạn [A1])
+  :Yêu cầu đăng nhập lại;
+  if (Đăng nhập thành công?) then (Có)
+    :Tiếp tục đặt đơn (giỏ hàng được kiểm tra lại);
+  else (Thất bại / Dừng)
+    :Kết thúc, không tạo đơn;
+    stop
+  endif
+else (Hợp lệ)
+endif
+
+' Bước 4 - Kiểm tra giỏ hàng và tính giá (E1, A2)
+:Backend kiểm tra giỏ hàng, trạng thái bán, tùy chọn và số lượng;
+if (Giỏ rỗng hoặc món/tùy chọn/số lượng không hợp lệ?) then (Có [E1])
+  :Từ chối yêu cầu, nêu lỗi cần sửa;
+  :Kết thúc, không tạo đơn;
+  stop
+else (Hợp lệ)
+endif
+:Backend lấy giá hiện hành và tự tính tổng tiền\n(không tin tổng tiền do trình duyệt gửi);
+
+if (Giá hoặc nội dung giỏ khác với lúc hiển thị?) then (Có [A2])
+  :Hiển thị nội dung và tổng tiền mới;
+  if (Khách xác nhận lại?) then (Đồng ý)
+  else (Không xác nhận)
+    :Kết thúc, chưa tạo đơn;
+    stop
+  endif
+else (Không)
+endif
+
+' Bước 5 - Tạo đơn và giữ tồn kho trong một transaction (E2, E3)
+partition "Database Transaction" {
+  :BEGIN transaction;
+  :Kiểm tra tồn kho, trạng thái bán và giá của các món;
+  if (Hết hàng, ngừng bán hoặc giá không còn hợp lệ?) then (Có [E2])
+    :ROLLBACK (không tạo đơn, không giảm tồn kho);
+    :Báo món không thể đặt, yêu cầu cập nhật giỏ hàng;
+    stop
+  else (Hợp lệ)
+  endif
+  :Tạo Order ở trạng thái PENDING_PAYMENT và giữ tồn kho;
+  if (Ghi đơn và giữ tồn kho thành công?) then (Không [E3])
+    :ROLLBACK toàn bộ (không có đơn dở dang);
+    :Báo chưa thể tạo đơn;
+    stop
+  else (Có)
+    :COMMIT transaction;
+  endif
+}
+
+' Bước 6-9 - Thanh toán mô phỏng, có thể thử lại (A3, E4-E7)
+repeat
+  if (Đây là lần kiểm tra lại sau lỗi kỹ thuật [E5]?) then (Có)
+    :Dùng lại idempotency key và nội dung của lần trước;
+  else (Không)
+    :Khách hàng chọn Ví hoặc Thẻ mô phỏng;
+    while (Phương thức được hỗ trợ?) is (Không [E4])
+      :Yêu cầu chọn Ví hoặc Thẻ mô phỏng\n(chưa gửi yêu cầu thanh toán);
+      :Khách hàng chọn lại phương thức;
+    endwhile (Có)
+    :Tạo idempotency key mới cho lần thử này;
+  endif
+
+  :Gửi yêu cầu thanh toán kèm idempotency key;
+
+  if (Idempotency key đã có kết quả lưu?) then (Có, cùng nội dung [E6])
+    :Trả lại kết quả đã lưu\n(không tạo payment attempt trùng);
+    stop
+  elseif (Key đã dùng với nội dung khác?) then (Có [E7])
+    :Từ chối yêu cầu, không tạo giao dịch mới;
+  else (Key chưa có kết quả)
+    :Dịch vụ thanh toán mô phỏng xử lý;
+    if (Kết quả từ dịch vụ thanh toán?) then (Thành công)
+      :Lưu payment = SUCCEEDED;
+      :Chuyển đơn sang CONFIRMED;
+      :Trả mã đơn và kết quả cho khách hàng;
+      stop
+    elseif (Timeout / lỗi kỹ thuật?) then (Có [E5])
+      :Không đánh dấu thành công, đơn giữ PENDING_PAYMENT;
+      :Thông báo kết quả chưa xử lý được;
+    else (Thất bại [A3])
+      :Lưu payment attempt = FAILED;
+      :Đơn giữ PENDING_PAYMENT;
+      :Thông báo thanh toán thất bại;
+    endif
+  endif
+repeat while (Khách hàng thử lại?) is (Có)
+-> Không;
+
+:Kết thúc, đơn chưa thanh toán (PENDING_PAYMENT);
+stop
+@enduml
