@@ -1,0 +1,118 @@
+@startuml Class_Diagram_Model
+skinparam classAttributeIconSize 0
+skinparam monochrome false
+
+title Sơ đồ lớp (Class Diagram) - Mô hình dữ liệu Đơn hàng & Thanh toán
+
+enum Role {
+  CUSTOMER
+  STAFF
+  MANAGER
+}
+
+enum OrderStatus {
+  PENDING_PAYMENT
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCEEDED
+  FAILED
+}
+
+enum PaymentMethod {
+  MOCK_WALLET
+  MOCK_CARD
+}
+
+enum OptionType {
+  SIZE
+  ICE_LEVEL
+  SUGAR_LEVEL
+  TOPPING
+}
+
+class User {
+  +id: String
+  +phoneNumber: String <<unique>>
+  +passwordHash: String
+  +fullName: String
+  +role: Role
+  +createdAt: DateTime
+}
+
+class Product {
+  +id: String
+  +name: String
+  +basePrice: Decimal
+  +isAvailable: Boolean
+  +stockQuantity: Integer
+}
+
+class ProductOption {
+  +id: String
+  +productId: String
+  +type: OptionType
+  +name: String
+  +extraPrice: Decimal
+  +isAvailable: Boolean
+}
+
+class Order {
+  +id: String
+  +customerId: String
+  +totalAmount: Decimal
+  +status: OrderStatus
+  +createdAt: DateTime
+  +updatedAt: DateTime
+  +calculateTotal(): Decimal
+}
+
+class OrderItem {
+  +id: String
+  +orderId: String
+  +productId: String
+  +quantity: Integer
+  +unitPrice: Decimal
+  +selectedOptions: JSON
+}
+
+class Payment {
+  +id: String
+  +orderId: String
+  +amount: Decimal
+  +method: PaymentMethod
+  +status: PaymentStatus
+  +idempotencyKey: String <<unique>>
+  +requestHash: String
+  +transactionRef: String
+  +createdAt: DateTime
+}
+
+note right of OrderItem
+  unitPrice và selectedOptions là bản chụp
+  giá/tùy chọn tại lúc đặt (FR-04, FR-11).
+end note
+
+note right of Payment
+  Mỗi bản ghi là một lần thử thanh toán (attempt).
+  requestHash dùng để phân biệt E6 (cùng nội dung)
+  và E7 (khác nội dung) khi trùng idempotencyKey (FR-15).
+end note
+
+' Mối quan hệ giữa các thực thể
+User "1" -- "0..*" Order : đặt >
+Order "1" *-- "1..*" OrderItem : chứa >
+Product "1" -- "0..*" OrderItem : được đặt trong >
+Product "1" *-- "0..*" ProductOption : có >
+Order "1" -- "0..*" Payment : có các lần thử thanh toán >
+User ..> Role
+Order ..> OrderStatus
+Payment ..> PaymentStatus
+Payment ..> PaymentMethod
+ProductOption ..> OptionType
+
+@enduml
