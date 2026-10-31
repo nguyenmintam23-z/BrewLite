@@ -39,7 +39,7 @@ class User {
   +id: String
   +phoneNumber: String <<unique>>
   +passwordHash: String
-  +fullName: String
+  +fullName: String {bắt buộc khi đăng ký}
   +role: Role
   +createdAt: DateTime
 }

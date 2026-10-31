@@ -23,10 +23,13 @@ BE -> BE: Xác thực JWT và kiểm tra role CUSTOMER
 alt Phiên hết hạn hoặc token không hợp lệ [A1]
     BE --> FE: 401 Unauthorized
     FE --> Customer: Yêu cầu đăng nhập lại
+    Customer -> FE: Nhập số điện thoại và mật khẩu
+    FE -> BE: POST /auth/login (phoneNumber, password)
     alt Đăng nhập thành công
-        Customer -> FE: Đăng nhập lại
+        BE --> FE: 200 OK (JWT mới)
         FE -> BE: POST /orders/checkout (JWT mới, cartItems)
-    else Đăng nhập thất bại hoặc khách dừng
+    else Sai số điện thoại/mật khẩu hoặc khách dừng
+        BE --> FE: 401 (đăng nhập thất bại)
         FE --> Customer: Kết thúc, không tạo đơn
     end
 end
