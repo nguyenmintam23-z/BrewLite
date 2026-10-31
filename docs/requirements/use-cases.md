@@ -41,8 +41,8 @@
 
 **A1 — Phiên đăng nhập hết hạn (tại bước 3)**
 
-1. Hệ thống yêu cầu khách hàng đăng nhập lại.
-2. Sau khi xác thực thành công, khách hàng có thể tiếp tục đặt đơn nếu giỏ hàng vẫn hợp lệ.
+1. Hệ thống yêu cầu khách hàng đăng nhập lại bằng số điện thoại và mật khẩu.
+2. Sau khi xác thực thành công, giao diện hiển thị tên hiển thị đã đăng ký; khách hàng có thể tiếp tục đặt đơn nếu giỏ hàng vẫn hợp lệ.
 3. Nếu đăng nhập thất bại hoặc khách hàng dừng thao tác, use case kết thúc mà không tạo đơn.
 
 **A2 — Giá hoặc giỏ hàng thay đổi (tại bước 4)**
@@ -77,7 +77,7 @@
 ### Quy tắc và giới hạn phạm vi
 
 - Thanh toán của MVP chỉ là mô phỏng Ví/Thẻ; không chuyển tiền thật và không thu thập/lưu số thẻ hoặc CVV.
-- Khách phải đăng nhập để đặt đơn; khách chưa có tài khoản cần đăng ký bằng số điện thoại trước. SMS/OTP chưa thuộc MVP.
+- Khách phải đăng nhập để đặt đơn; khách chưa có tài khoản cần đăng ký bằng tên hiển thị, số điện thoại và mật khẩu. Sau khi đăng nhập thành công, giao diện hiển thị tên hiển thị đã đăng ký. SMS/OTP chưa thuộc MVP.
 - Nhân viên và quản lý không tham gia luồng checkout này; họ dùng tài khoản nội bộ do quản lý cấp.
 - Use case kết thúc khi hệ thống trả kết quả tạo đơn/thanh toán. Chuẩn bị món, giao hàng và xử lý hoàn tiền không thuộc luồng này.
 
@@ -87,7 +87,7 @@
 |---|---|
 | FR-04 | Chọn size, mức đá, mức đường và topping khả dụng cho từng món. |
 | FR-05–FR-07 | Thêm món, xem giỏ hàng, cập nhật số lượng hoặc xóa món. |
-| FR-08–FR-10 | Đăng ký/đăng nhập và phân quyền theo vai trò; checkout yêu cầu `CUSTOMER` đã xác thực. |
+| FR-08–FR-10 | Đăng ký với tên hiển thị, số điện thoại, mật khẩu; đăng nhập hiển thị tên đã đăng ký; phân quyền theo vai trò. Checkout yêu cầu `CUSTOMER` đã xác thực. |
 | FR-11 | Tạo đơn từ giỏ hợp lệ; backend tự tính tổng tiền. |
 | FR-12 | Kiểm tra và giữ tồn kho cùng lúc tạo đơn bằng transaction. |
 | FR-13 | Chọn phương thức Ví hoặc Thẻ mô phỏng. |

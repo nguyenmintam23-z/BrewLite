@@ -61,8 +61,8 @@
         <mxCell id="u14" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=15;fontColor=#1F2937;fillColor=#F3F7FB;strokeColor=#355070;strokeWidth=2;" value="Xem báo cáo doanh thu" vertex="1">
           <mxGeometry height="60" width="210" x="990" y="760" as="geometry" />
         </mxCell>
-        <mxCell id="u15" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=15;fontColor=#1F2937;fillColor=#F3F7FB;strokeColor=#355070;strokeWidth=2;" value="Đăng ký tài khoản\nbằng số điện thoại" vertex="1">
-          <mxGeometry height="60" width="230" x="980" y="535" as="geometry" />
+        <mxCell id="u15" parent="1" style="ellipse;whiteSpace=wrap;html=1;fontSize=15;fontColor=#1F2937;fillColor=#F3F7FB;strokeColor=#355070;strokeWidth=2;" value="Đăng ký tài khoản\n(tên hiển thị, số điện thoại)" vertex="1">
+          <mxGeometry height="65" width="260" x="965" y="535" as="geometry" />
         </mxCell>
         <mxCell id="e1" edge="1" parent="1" source="cust" style="endArrow=none;html=1;strokeColor=#7EA6E0;strokeWidth=1.5;" target="u1">
           <mxGeometry relative="1" as="geometry" />
@@ -249,7 +249,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#FFF7D6;fontColor=#1F2937;strokeColor=#C9A227;" value="Tiền điều kiện: khách hàng đã đăng nhập. Tài khoản nội bộ do quản lý cấp; backend phân quyền CUSTOMER, STAFF và MANAGER." vertex="1">
+        <mxCell id="note" parent="1" style="shape=note;whiteSpace=wrap;html=1;size=14;fillColor=#FFF7D6;fontColor=#1F2937;strokeColor=#C9A227;" value="Tiền điều kiện: khách hàng đã đăng nhập. Khách đăng ký bằng tên hiển thị, số điện thoại và mật khẩu; sau đăng nhập, giao diện hiển thị tên đã đăng ký. Tài khoản nội bộ do quản lý cấp; backend phân quyền CUSTOMER, STAFF và MANAGER." vertex="1">
           <mxGeometry height="50" width="760" x="220" y="740" as="geometry" />
         </mxCell>
       </root>

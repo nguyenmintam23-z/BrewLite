@@ -6,7 +6,7 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 ## 2. Stakeholder
 | Stakeholder | Vai trò | Mục tiêu | Kỳ vọng |
 |---|---|---|---|
-| Khách hàng | Người sử dụng website để xem và đặt đồ uống | Dễ dàng xem menu, tùy chỉnh đồ uống, đặt hàng, thanh toán và theo dõi đơn | Giao diện dễ sử dụng, thông tin đặt đồ uống chính xác, đặt hàng nhanh, thanh toán thuận tiện |
+| Khách hàng | Người sử dụng website để xem và đặt đồ uống | Dễ dàng xem menu, tùy chỉnh đồ uống, đặt hàng, thanh toán và theo dõi đơn; nhận biết tài khoản cá nhân sau khi đăng nhập | Giao diện dễ sử dụng, thông tin đặt đồ uống chính xác, đặt hàng nhanh, thanh toán thuận tiện |
 | Nhân viên quầy | Tiếp nhận và xử lý đơn hàng từ khách | Nhận đơn chính xác và xử lý đơn nhanh chóng | Thông tin đơn rõ ràng, hạn chế sai sót, dễ xem đơn mới và cập nhật trạng thái chính xác |
 | Quản lý cửa hàng | Quản lý đồ uống, đơn hàng, nhân viên và hoạt động kinh doanh | Quản lý cửa hàng hiệu quả, theo dõi tình hình kinh doanh | Đơn hàng, sản phẩm, nhân viên và doanh thu|
 | Giảng viên/người nghiệm thu | Đánh giá hệ thống và kết quả đồ án | Hệ thống đáp ứng yêu cầu và tiêu chí nghiệm thu của đề bài và đúng phạm vi đề tài | Tính đầy đủ, chính xác, tính khả dụng, và khả năng hoạt động của hệ thống |
@@ -14,7 +14,7 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 | Đơn vị thanh toán | Dịch vụ thanh toán mô phỏng   | nhận yêu cầu thanh toán và trả về kết quả thành công/thất bại | Bảo mật dịch vụ, tính chính xác của thanh toán và trạng thái giao dịch |
 
 ## 3. Phạm vi MVP (In-scope)
-- Khách hàng đăng ký bằng số điện thoại và mật khẩu, sau đó đăng nhập; nhân viên và quản lý đăng nhập bằng tài khoản được cấp hoặc tài khoản mẫu được tạo sẵn.
+- Khách hàng tự đăng ký bằng tên hiển thị, số điện thoại và mật khẩu; khi đăng nhập bằng số điện thoại và mật khẩu thành công, giao diện hiển thị tên đã đăng ký. Nhân viên và quản lý đăng nhập bằng tài khoản được cấp hoặc tài khoản mẫu được tạo sẵn.
 - Phân quyền theo vai trò `CUSTOMER`, `STAFF` và `MANAGER`; backend kiểm tra quyền khi gọi chức năng được bảo vệ.
 - Khách hàng xem menu, tìm kiếm và xem chi tiết đồ uống.
 - Khách hàng chọn size, mức đá, mức đường và topping theo cấu hình sản phẩm.
@@ -40,7 +40,7 @@ BrewLite là website hỗ trợ khách hàng xem menu, xem chi tiết và tùy c
 ## 6. Giả định
 - Nhóm cung cấp dữ liệu mẫu về đồ uống, giá, size và topping.
 - Người dùng có kết nối Internet và trình duyệt hiện đại để truy cập website.
-- Khách hàng tự đăng ký tài khoản bằng số điện thoại; tài khoản nhân viên/quản lý do quản lý tạo hoặc được seed sẵn cho môi trường demo.
+- Khách hàng tự đăng ký tài khoản bằng tên hiển thị, số điện thoại và mật khẩu; tên hiển thị được lưu để hiển thị sau khi đăng nhập. Tài khoản nhân viên/quản lý do quản lý tạo hoặc được seed sẵn cho môi trường demo.
 - Mỗi tài khoản có một vai trò chính; quyền được kiểm tra ở backend, không chỉ ẩn chức năng trên giao diện.
 - Dịch vụ thanh toán trong MVP là mô phỏng và có thể trả kết quả thành công/thất bại.
 - MVP mô hình hóa một cửa hàng và các trạng thái đơn cơ bản.

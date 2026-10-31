@@ -2,9 +2,9 @@
 
 ## 1. Mục đích và phạm vi
 
-BrewLite là website đặt đồ uống. Khách có thể xem menu mà chưa cần đăng nhập; khách cần đăng ký/đăng nhập bằng số điện thoại trước khi đặt đơn. MVP hỗ trợ tùy chỉnh đồ uống, quản lý giỏ hàng, đặt đơn, thanh toán mô phỏng và theo dõi đơn. Nhân viên xử lý đơn; quản lý quản lý đồ uống, tài khoản nhân viên và xem báo cáo cơ bản. Hệ thống dùng Next.js, NestJS và PostgreSQL.
+BrewLite là website đặt đồ uống. Khách có thể xem menu mà chưa cần đăng nhập; khách cần đăng ký bằng tên hiển thị, số điện thoại và mật khẩu, sau đó đăng nhập bằng số điện thoại và mật khẩu trước khi đặt đơn. Sau khi đăng nhập thành công, giao diện hiển thị tên đã đăng ký. MVP hỗ trợ tùy chỉnh đồ uống, quản lý giỏ hàng, đặt đơn, thanh toán mô phỏng và theo dõi đơn. Nhân viên xử lý đơn; quản lý quản lý đồ uống, tài khoản nhân viên và xem báo cáo cơ bản. Hệ thống dùng Next.js, NestJS và PostgreSQL.
 
-Thanh toán trong MVP chỉ mô phỏng, không xử lý tiền thật. Sơ đồ use case tổng quát nằm tại [`docs/diagrams/brewlite-usecase.drawio`](../diagrams/brewlite-usecase.drawio), trang Use case tổng quát. Sơ đồ use case đặt và thanh toán nằm ở trang thứ hai.
+Thanh toán trong MVP chỉ mô phỏng, không xử lý tiền thật. Sơ đồ use case tổng quát nằm tại [`docs/diagrams/brewlite-usecase.drawio`](../diagrams/brewlite-usecase.drawio), trang **Use case tổng quát**. Sơ đồ use case đặt và thanh toán nằm ở trang thứ hai.
 
 ## 2. Quy ước ưu tiên MoSCoW
 
@@ -19,7 +19,7 @@ Thanh toán trong MVP chỉ mô phỏng, không xử lý tiền thật. Sơ đ�
 
 | Vai trò | Mô tả | Quyền chính |
 |---|---|---|
-| CUSTOMER | Khách hàng tự đăng ký bằng số điện thoại và mật khẩu | Xem menu, quản lý giỏ hàng, đặt/thanh toán đơn, xem đơn của mình |
+| CUSTOMER | Khách hàng tự đăng ký bằng tên hiển thị, số điện thoại và mật khẩu | Xem menu, quản lý giỏ hàng, đặt/thanh toán đơn, xem đơn của mình; tên hiển thị được hiện sau khi đăng nhập |
 | STAFF | Nhân viên dùng tài khoản do quản lý cấp | Xem đơn và cập nhật trạng thái xử lý |
 | MANAGER | Quản lý dùng tài khoản quản lý được cấp | Các quyền quản lý đồ uống, nhân viên và báo cáo; có thể xử lý đơn |
 
@@ -34,8 +34,8 @@ Thanh toán trong MVP chỉ mô phỏng, không xử lý tiền thật. Sơ đ�
 | FR-05 | Khách có thể thêm một món đã chọn tùy chọn vào giỏ hàng. | Must | Món được thêm với đúng tùy chọn, số lượng và đơn giá; tổng tiền giỏ tăng đúng bằng thành tiền của món. |
 | FR-06 | Khách có thể xem các món và tổng tiền trong giỏ hàng. | Must | Nội dung giỏ và tổng tiền hiển thị khớp với các món, số lượng, tùy chọn và giá hiện hành. |
 | FR-07 | Khách có thể sửa số lượng hoặc xóa món khỏi giỏ hàng. | Must | Số lượng và tổng tiền thay đổi đúng sau khi sửa; sau khi xóa, món không còn trong giỏ và tổng tiền được tính lại. |
-| FR-08 | Khách có thể tự đăng ký tài khoản bằng số điện thoại và mật khẩu hợp lệ. | Must | Đăng ký hợp lệ tạo tài khoản `CUSTOMER`; số điện thoại đã dùng hoặc dữ liệu không hợp lệ bị từ chối và không tạo tài khoản trùng. |
-| FR-09 | Khách hàng, nhân viên và quản lý có thể đăng nhập bằng tài khoản hợp lệ. | Must | Đăng nhập thành công trả token và đúng vai trò; sai thông tin đăng nhập trả lỗi xác thực và không cấp token. |
+| FR-08 | Khách có thể tự đăng ký tài khoản bằng tên hiển thị, số điện thoại và mật khẩu hợp lệ; sau khi đăng nhập thành công, hệ thống hiển thị tên hiển thị của khách. | Must | Đăng ký hợp lệ tạo tài khoản `CUSTOMER` và lưu tên hiển thị; số điện thoại đã dùng hoặc dữ liệu không hợp lệ bị từ chối và không tạo tài khoản trùng. Khi khách đăng nhập thành công, giao diện hiển thị đúng tên hiển thị đã đăng ký. |
+| FR-09 | Khách hàng, nhân viên và quản lý có thể đăng nhập bằng thông tin tài khoản hợp lệ. | Must | Khách hàng đăng nhập bằng số điện thoại và mật khẩu; nhân viên/quản lý dùng thông tin tài khoản được cấp. Đăng nhập thành công trả token và đúng vai trò; sai thông tin đăng nhập trả lỗi xác thực và không cấp token. |
 | FR-10 | Hệ thống giới hạn chức năng theo vai trò `CUSTOMER`, `STAFF` và `MANAGER`. | Must | `STAFF` gọi API quản lý nhân viên/báo cáo nhận `403`; `CUSTOMER` gọi API nội bộ nhận `403`; `MANAGER` gọi được API quản trị được cấp. Yêu cầu không có token nhận `401`. |
 | FR-11 | Khách đã đăng nhập có thể tạo đơn từ giỏ hàng hợp lệ; backend tự tính tổng tiền. | Must | Đơn được lưu với đúng chủ sở hữu, món, tùy chọn, số lượng và tổng tiền tính ở backend; giỏ rỗng hoặc dữ liệu sai bị từ chối. |
 | FR-12 | Hệ thống kiểm tra và giữ tồn kho cùng lúc tạo đơn bằng một transaction. | Must | Đơn và thay đổi tồn kho cùng được ghi khi thành công; nếu một bước lỗi thì rollback toàn bộ; nếu không đủ hàng thì không tạo đơn và tồn kho không bị giảm. |
@@ -72,10 +72,9 @@ Sơ đồ tổng quát thể hiện các actor `CUSTOMER`, `STAFF`, `MANAGER`, d
 ## 7. Quy tắc và giả định nghiệp vụ dùng trong SRS
 
 - Khách có thể xem menu mà không đăng nhập; cần đăng nhập để đặt đơn và xem dữ liệu đơn cá nhân.
-- Đăng ký khách hàng dùng số điện thoại và mật khẩu; xác minh SMS/OTP chưa nằm trong MVP.
+- Đăng ký khách hàng dùng tên hiển thị, số điện thoại và mật khẩu; sau đăng nhập, giao diện hiển thị tên đã đăng ký. Xác minh SMS/OTP chưa nằm trong MVP.
 - Nhân viên và quản lý không tự đăng ký; tài khoản nội bộ do quản lý tạo hoặc seed sẵn.
 - Thanh toán chỉ mô phỏng Ví/Thẻ. Khi thanh toán thất bại, đơn giữ `PENDING_PAYMENT` để khách thử lại; cùng idempotency key trả cùng kết quả, lần thử mới dùng key mới.
 - Đơn và phần tồn kho được giữ phải ghi nhất quán trong transaction. Khi nhân viên hủy đơn chưa chuẩn bị, phần tồn kho đã giữ được hoàn lại.
 - Trạng thái đơn cơ bản: `PENDING_PAYMENT → CONFIRMED → PREPARING → COMPLETED`; đơn chưa chuẩn bị có thể chuyển sang `CANCELLED`. Trạng thái thanh toán: `PENDING`, `SUCCEEDED`, `FAILED`.
 - Báo cáo doanh thu chỉ tính đơn có thanh toán thành công; phạm vi báo cáo là tổng số đơn và tổng doanh thu theo khoảng thời gian.
- 
