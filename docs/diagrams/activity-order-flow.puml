@@ -11,9 +11,9 @@ start
 :Khách hàng mở giỏ hàng, xem món, tùy chọn, số lượng và tổng tạm tính;
 :Khách hàng chọn "Đặt hàng/Thanh toán";
 
-' Bước 3 - Xác thực và phân quyền (A1)
-if (Phiên đăng nhập hợp lệ và role là CUSTOMER?) then (Không / Hết hạn [A1])
-  :Yêu cầu đăng nhập lại;
+' Bước 3 - Xác thực và phân quyền (A1, FR-09, FR-10, NFR-03)
+if (Có phiên đăng nhập hợp lệ (token còn hạn)?) then (Không / Hết hạn [A1])
+  :Yêu cầu đăng nhập lại bằng số điện thoại và mật khẩu;
   if (Đăng nhập thành công?) then (Có)
     :Tiếp tục đặt đơn (giỏ hàng được kiểm tra lại);
   else (Thất bại / Dừng)
@@ -21,6 +21,13 @@ if (Phiên đăng nhập hợp lệ và role là CUSTOMER?) then (Không / Hết
     stop
   endif
 else (Hợp lệ)
+endif
+
+if (Vai trò là CUSTOMER?) then (Không - STAFF/MANAGER)
+  :Từ chối (403 Forbidden);
+  :Kết thúc, không tạo đơn;
+  stop
+else (Có)
 endif
 
 ' Bước 4 - Kiểm tra giỏ hàng và tính giá (E1, A2)
