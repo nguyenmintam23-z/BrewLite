@@ -13,8 +13,9 @@ enum Role {
 enum OrderStatus {
   PENDING_PAYMENT
   CONFIRMED
-  CANCELLED
+  PREPARING
   COMPLETED
+  CANCELLED
 }
 
 enum PaymentStatus {
@@ -39,14 +40,16 @@ class User {
   +id: String
   +phoneNumber: String <<unique>>
   +passwordHash: String
-  +fullName: String
+  +fullName: String {bắt buộc khi đăng ký}
   +role: Role
+  +isActive: Boolean
   +createdAt: DateTime
 }
 
 class Product {
   +id: String
   +name: String
+  +description: String
   +basePrice: Decimal
   +isAvailable: Boolean
   +stockQuantity: Integer
@@ -80,6 +83,14 @@ class OrderItem {
   +selectedOptions: JSON
 }
 
+class OrderStatusHistory {
+  +id: String
+  +orderId: String
+  +status: OrderStatus
+  +changedBy: String
+  +changedAt: DateTime
+}
+
 class Payment {
   +id: String
   +orderId: String
@@ -97,6 +108,13 @@ note right of OrderItem
   giá/tùy chọn tại lúc đặt (FR-04, FR-11).
 end note
 
+note left of OrderStatus
+  Luồng trạng thái (SRS mục 7, FR-18):
+  PENDING_PAYMENT → CONFIRMED → PREPARING → COMPLETED
+  Đơn chưa chuẩn bị có thể chuyển CANCELLED
+  (hoàn lại tồn kho đã giữ).
+end note
+
 note right of Payment
   Mỗi bản ghi là một lần thử thanh toán (attempt).
   requestHash dùng để phân biệt E6 (cùng nội dung)
@@ -109,6 +127,7 @@ Order "1" *-- "1..*" OrderItem : chứa >
 Product "1" -- "0..*" OrderItem : được đặt trong >
 Product "1" *-- "0..*" ProductOption : có >
 Order "1" -- "0..*" Payment : có các lần thử thanh toán >
+Order "1" *-- "1..*" OrderStatusHistory : lưu các mốc trạng thái (FR-17) >
 User ..> Role
 Order ..> OrderStatus
 Payment ..> PaymentStatus

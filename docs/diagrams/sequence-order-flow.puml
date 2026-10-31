@@ -20,15 +20,22 @@ activate BE
 
 == Bước 3: Xác thực và phân quyền ==
 BE -> BE: Xác thực JWT và kiểm tra role CUSTOMER
-alt Phiên hết hạn hoặc token không hợp lệ [A1]
+alt Thiếu token, token sai hoặc hết hạn [A1]
     BE --> FE: 401 Unauthorized
     FE --> Customer: Yêu cầu đăng nhập lại
+    Customer -> FE: Nhập số điện thoại và mật khẩu
+    FE -> BE: POST /auth/login (phoneNumber, password)
     alt Đăng nhập thành công
-        Customer -> FE: Đăng nhập lại
+        BE --> FE: 200 OK (JWT mới, role)
         FE -> BE: POST /orders/checkout (JWT mới, cartItems)
-    else Đăng nhập thất bại hoặc khách dừng
+    else Sai số điện thoại/mật khẩu hoặc khách dừng
+        BE --> FE: 401 (đăng nhập thất bại)
         FE --> Customer: Kết thúc, không tạo đơn
     end
+end
+opt Token hợp lệ nhưng vai trò không phải CUSTOMER (STAFF/MANAGER)
+    BE --> FE: 403 Forbidden
+    FE --> Customer: Báo không có quyền đặt đơn, kết thúc
 end
 
 == Bước 4-5: Kiểm tra giỏ hàng, tính giá và tạo đơn ==
