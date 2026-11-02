@@ -1,0 +1,36 @@
+name: Node.js CI/CD Pipeline
+
+# Kích hoạt workflow khi push hoặc pull request vào branch main
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Lấy mã nguồn từ repository
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # 2. Cài đặt môi trường Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '26.13.0'
+        cache: 'npm'
+
+    # 3. Cài đặt các thư viện phụ thuộc
+    - name: Install dependencies
+      run: npm ci
+
+    # 4. Chạy kiểm thử tự động (CI)
+    - name: Run tests
+      run: npm test
+
+    # 5. Build dự án
+    - name: Build project
+      run: npm run build --if-present
