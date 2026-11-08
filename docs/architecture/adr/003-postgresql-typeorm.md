@@ -1,10 +1,4 @@
 # ADR 003 – Sử dụng PostgreSQL với TypeORM và Database Migrations
-
-**Dự án:** BrewLite – Hệ thống quản lý và bán đồ uống  
-**Mã quyết định:** ADR-003  
-**Trạng thái:** Accepted  
-**Phạm vi:** Kiến trúc cơ sở dữ liệu, truy cập dữ liệu và quản lý thay đổi schema
-
 ---
 
 ## 1. Bối cảnh (Context)
@@ -183,5 +177,3 @@ Hệ thống duy trì cấu hình `synchronize: false` nhằm kiểm soát thay 
 Trong môi trường local, PostgreSQL được vận hành bằng Docker Compose với named volume. Trong môi trường production, Render Postgres được lựa chọn làm phương án lưu trữ dữ liệu.
 
 Các thay đổi schema quan trọng cần được kiểm tra và sao lưu dữ liệu trước khi áp dụng. Khi migration thất bại, quy trình triển khai phải dừng để xử lý sự cố và tiến hành khôi phục nếu cần thiết.
-
-Quyết định được ghi nhận ở trạng thái **Accepted** và là cơ sở để thực hiện thiết kế, phát triển, kiểm thử và triển khai cơ sở dữ liệu trong hệ thống BrewLite.
