@@ -1,10 +1,4 @@
 # ADR 002 – Tổ chức Backend NestJS theo Module nghiệp vụ
-
-**Dự án:** BrewLite – Hệ thống quản lý và bán đồ uống  
-**Mã quyết định:** ADR-002  
-**Trạng thái:** Accepted  
-**Phạm vi:** Kiến trúc Backend và tổ chức module nghiệp vụ
-
 ---
 
 ## 1. Bối cảnh (Context)
