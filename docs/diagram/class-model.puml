@@ -40,7 +40,7 @@ class User {
   +id: String
   +phoneNumber: String <<unique>>
   +passwordHash: String
-  +displayName: String {bắt buộc khi đăng ký, FR-08}
+  +displayName: String {bắt buộc khi đăng ký, FR-07}
   +role: Role
   +isActive: Boolean
   +createdAt: DateTime
@@ -105,11 +105,11 @@ class Payment {
 
 note right of OrderItem
   unitPrice và selectedOptions là bản chụp
-  giá/tùy chọn tại lúc đặt (FR-04, FR-11).
+  giá/tùy chọn tại lúc đặt (FR-03, FR-10).
 end note
 
 note left of OrderStatus
-  Luồng trạng thái (SRS mục 7, FR-18):
+  Luồng trạng thái (SRS mục 7, FR-17):
   PENDING_PAYMENT → CONFIRMED → PREPARING → COMPLETED
   Đơn chưa chuẩn bị có thể chuyển CANCELLED
   (hoàn lại tồn kho đã giữ).
@@ -118,7 +118,7 @@ end note
 note right of Payment
   Mỗi bản ghi là một lần thử thanh toán (attempt).
   requestHash dùng để phân biệt E6 (cùng nội dung)
-  và E7 (khác nội dung) khi trùng idempotencyKey (FR-15).
+  và E7 (khác nội dung) khi trùng idempotencyKey (FR-14).
 end note
 
 ' Mối quan hệ giữa các thực thể
@@ -127,7 +127,7 @@ Order "1" *-- "1..*" OrderItem : chứa >
 Product "1" -- "0..*" OrderItem : được đặt trong >
 Product "1" *-- "0..*" ProductOption : có >
 Order "1" -- "0..*" Payment : có các lần thử thanh toán >
-Order "1" *-- "1..*" OrderStatusHistory : lưu các mốc trạng thái (FR-17) >
+Order "1" *-- "1..*" OrderStatusHistory : lưu các mốc trạng thái (FR-16) >
 User ..> Role
 Order ..> OrderStatus
 Payment ..> PaymentStatus

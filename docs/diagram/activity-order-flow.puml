@@ -11,7 +11,7 @@ start
 :Khách hàng mở giỏ hàng, xem món, tùy chọn, số lượng và tổng tạm tính;
 :Khách hàng chọn "Đặt hàng/Thanh toán";
 
-' Bước 3 - Xác thực và phân quyền (A1, FR-09, FR-10, NFR-03)
+' Bước 3 - Xác thực và phân quyền (A1, FR-08, FR-09, NFR-03)
 if (Có phiên đăng nhập hợp lệ (token còn hạn)?) then (Không / Hết hạn [A1])
   :Yêu cầu đăng nhập lại bằng số điện thoại và mật khẩu;
   if (Đăng nhập thành công?) then (Có)
