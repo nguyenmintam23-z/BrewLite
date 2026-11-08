@@ -1,8 +1,4 @@
 # BrewLite – Tài liệu thiết kế kiến trúc (Task 3.1)
-
-**Trạng thái:** DRAFT – nhóm đã chọn Render làm nền tảng production; backend chính vẫn chờ xác nhận. Chưa có bằng chứng hệ thống đã deploy.  
-**Căn cứ:** Assignment 2, Task 3.1–3.2; bản mã nguồn BrewLite ZIP cung cấp ngày 08/11/2026.
-
 ## 1. Mục tiêu và phạm vi
 
 Mô tả kiến trúc đề xuất cho luồng xem menu → chọn tùy chọn → giỏ hàng → đặt đơn → thanh toán mô phỏng → theo dõi đơn. Kiến trúc phân lớp kết hợp backend NestJS chia module. Tài liệu phân biệt **hiện trạng đã quan sát** với **hạng mục dự kiến**.
