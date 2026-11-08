@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-label="Yuzu tea">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#F9F2DB"/>
+      <stop offset="100%" stop-color="#EEF4EA"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="180" rx="20" fill="url(#bg)"/>
+  <path d="M66 88h84c12 0 22 10 22 22v8c0 17-14 31-31 31H81c-17 0-31-14-31-31v-8c0-12 10-22 22-22Z" fill="#F5D66B"/>
+  <path d="M92 74c0-18 15-32 33-32 18 0 32 14 32 32v10H92V74Z" fill="#F9EAAF"/>
+  <path d="M146 94h24c8 0 15 6 15 14v7c0 16-13 29-29 29h-2V94Z" fill="#D7A838" opacity="0.9"/>
+  <path d="M92 100h58" stroke="#FFF7D5" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="170" cy="52" r="9" fill="#F4C84C"/>
+  <circle cx="148" cy="42" r="7" fill="#F5E7A6"/>
+</svg>

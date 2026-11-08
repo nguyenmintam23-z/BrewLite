@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-label="Trà sữa trân châu">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#F7F1E8"/>
+      <stop offset="100%" stop-color="#EEF7EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="180" rx="20" fill="url(#bg)"/>
+  <path d="M64 86h88c14 0 25 11 25 25v8c0 18-15 33-33 33H80c-18 0-33-15-33-33v-8c0-14 11-25 25-25Z" fill="#F0D09D"/>
+  <path d="M90 74c0-17 14-32 32-32 18 0 32 13 33 30l-8 10c-8-8-16-12-25-12-12 0-22 7-29 17l-3-13Z" fill="#E8BB6E"/>
+  <path d="M147 94h24c8 0 15 7 15 15v9c0 16-13 29-29 29h-3V94Z" fill="#CC9A4A" opacity="0.9"/>
+  <path d="M94 101h57" stroke="#FFF7E5" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="170" cy="52" r="9" fill="#9EC2A4"/>
+  <circle cx="150" cy="42" r="7" fill="#BFDCC2"/>
+  <circle cx="94" cy="138" r="6" fill="#B57D3C" opacity="0.7"/>
+  <circle cx="116" cy="145" r="5" fill="#B57D3C" opacity="0.7"/>
+</svg>

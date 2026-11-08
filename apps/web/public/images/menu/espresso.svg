@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-label="Espresso">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#F2E7D8"/>
+      <stop offset="100%" stop-color="#EEF5EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="180" rx="20" fill="url(#bg)"/>
+  <path d="M66 84h82c13 0 24 11 24 24v8c0 16-13 29-29 29H80c-17 0-31-13-31-29v-8c0-13 11-24 24-24Z" fill="#3C2D24"/>
+  <path d="M92 68c0-17 14-31 31-31 18 0 32 12 33 29l-8 10c-7-8-15-12-25-12-12 0-22 7-29 17l-2-13Z" fill="#6D4E3C"/>
+  <path d="M94 100h58" stroke="#866553" stroke-width="6" stroke-linecap="round"/>
+  <path d="M144 86h22c9 0 16 7 16 16v8c0 17-13 30-30 30h-3V86Z" fill="#211912" opacity="0.9"/>
+  <circle cx="170" cy="52" r="9" fill="#B97A49" opacity="0.8"/>
+</svg>

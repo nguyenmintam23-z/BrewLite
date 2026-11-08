@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-label="Bạc xỉu">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#F4ECDD"/>
+      <stop offset="100%" stop-color="#F1F6E9"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="180" rx="20" fill="url(#bg)"/>
+  <path d="M68 82h78c10 0 18 8 18 18v8c0 16-13 29-29 29H79c-16 0-29-13-29-29v-8c0-10 8-18 18-18Z" fill="#7B4D2D"/>
+  <path d="M88 62c0-18 15-32 34-32 17 0 32 12 35 28l-8 9c-8-6-15-9-27-9-12 0-22 7-28 16l-6-12Z" fill="#E8C59C"/>
+  <path d="M92 98h66" stroke="#FCECCC" stroke-width="6" stroke-linecap="round"/>
+  <path d="M145 90h22c8 0 14 6 14 14v8c0 16-13 29-29 29h-3V90Z" fill="#4F2E1F" opacity="0.9"/>
+  <path d="M158 72l12-18 9 18" stroke="#5E3C2C" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <circle cx="168" cy="48" r="10" fill="#EED7AC"/>
+</svg>

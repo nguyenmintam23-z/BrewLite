@@ -12,7 +12,7 @@ node "LOCAL - Development" as local {
   database "PostgreSQL\nDocker Compose" as localdb
 
   localweb --> localapi : HTTP / REST
-  localapi --> localdb : TCP 5432
+  localapi --> localdb : TCP 5433 (host)
 }
 
 node "CI - GitHub Actions" as ci {

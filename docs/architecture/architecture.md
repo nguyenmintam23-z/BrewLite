@@ -32,7 +32,7 @@ PostgreSQL (local: Docker Compose + named volume)
 | Next.js | `apps/web-next/package.json`, `next.config.ts` | Có ứng dụng Next.js; chưa thấy cấu hình PWA trong `next.config.ts` |
 | NestJS API | `apps/api/src/app.module.ts` | Đăng ký `ProductsModule`, `OrdersModule`, `PaymentsModule`, `AuthModule` |
 | NestJS thứ hai | `package.json`, `nest-cli.json`, `src/` ở root | Có thể khởi chạy riêng; vai trò chính thức chưa xác nhận |
-| PostgreSQL | `docker-compose.yml` | `postgres:17-alpine`, chỉ bind cổng 5432 lên loopback local, có volume `postgres_data` và DB healthcheck |
+| PostgreSQL | `docker-compose.yml` | `postgres:17-alpine`, chỉ bind cổng host `DB_PORT` (mặc định 5433) lên loopback local, có volume `postgres_data` và DB healthcheck |
 | ORM | `apps/api/src/app.module.ts`, `database/data-source.ts` | TypeORM, `synchronize: false`; cấu hình DB qua environment |
 | Migration | `apps/api/src/database/migrations/` | Có migration; chưa xác minh chạy migration thành công |
 | Thanh toán mô phỏng | `apps/api/src/payments/payments.controller.ts`, `payments.service.ts` | API `POST /payments/:id/mock-result`; xử lý kết quả thành công/thất bại trong transaction |

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-label="Matcha latte">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#EDF8ED"/>
+      <stop offset="100%" stop-color="#F1F7EE"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="180" rx="20" fill="url(#bg)"/>
+  <path d="M64 86h86c12 0 22 10 22 22v8c0 18-15 33-33 33H81c-18 0-33-15-33-33v-8c0-12 10-22 22-22Z" fill="#A1C88B"/>
+  <path d="M92 70c0-18 14-33 32-33 18 0 33 14 33 31v12H92V70Z" fill="#D4EFB3"/>
+  <path d="M146 92h24c8 0 15 7 15 15v8c0 16-13 29-29 29h-2V92Z" fill="#6FA763" opacity="0.9"/>
+  <path d="M91 100h60" stroke="#F7FBEF" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="172" cy="52" r="10" fill="#C8E6AE"/>
+  <circle cx="150" cy="44" r="6" fill="#9AC67F"/>
+</svg>

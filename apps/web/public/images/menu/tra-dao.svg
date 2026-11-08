@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 180" role="img" aria-label="Trà đào">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#F9F1E5"/>
+      <stop offset="100%" stop-color="#F2F5EA"/>
+    </linearGradient>
+  </defs>
+  <rect width="240" height="180" rx="20" fill="url(#bg)"/>
+  <path d="M66 88h84c12 0 22 10 22 22v8c0 15-12 28-27 28H79c-17 0-31-13-31-28v-8c0-12 10-22 22-22Z" fill="#F6B65A"/>
+  <path d="M90 74c0-18 15-33 33-33 17 0 31 13 33 30l-8 11c-8-8-16-12-25-12-12 0-22 7-29 17l-4-13Z" fill="#F8D77D"/>
+  <path d="M146 94h24c8 0 15 6 15 14v8c0 15-12 27-27 27h-2V94Z" fill="#D98C35" opacity="0.9"/>
+  <path d="M90 101h58" stroke="#FFF4D9" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="165" cy="52" r="10" fill="#F5A85F"/>
+  <circle cx="150" cy="42" r="7" fill="#F6CE72"/>
+</svg>
