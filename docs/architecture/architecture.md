@@ -1,4 +1,4 @@
-# BrewLite – Tài liệu thiết kế kiến trúc (Task 3.1)
+# BrewLite – Tài liệu thiết kế kiến trúc 
 ## 1. Mục tiêu và phạm vi
 
 Mô tả kiến trúc đề xuất cho luồng xem menu → chọn tùy chọn → giỏ hàng → đặt đơn → thanh toán mô phỏng → theo dõi đơn. Kiến trúc phân lớp kết hợp backend NestJS chia module. Tài liệu phân biệt **hiện trạng đã quan sát** với **hạng mục dự kiến**.
