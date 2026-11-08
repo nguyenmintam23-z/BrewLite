@@ -1,0 +1,64 @@
+
+@startuml
+title BrewLite - UML Deployment Diagram (Render)
+
+skinparam componentStyle rectangle
+skinparam shadowing false
+left to right direction
+
+node "LOCAL - Development" as local {
+  artifact "Next.js\napps/web-next" as localweb
+  artifact "NestJS\napps/api" as localapi
+  database "PostgreSQL\nDocker Compose" as localdb
+
+  localweb --> localapi : HTTP / REST
+  localapi --> localdb : TCP 5432
+}
+
+node "CI - GitHub Actions" as ci {
+  artifact "CI.yml\nCurrent workflow" as workflow
+  artifact "Build / Test / Deploy\nPlanned" as pipeline
+}
+
+cloud "Container Registry\nPlanned (if required)" as registry
+
+node "PRODUCTION - Render" as render {
+  node "Render Web Service\nNext.js" as web
+  node "Render Web Service\nNestJS API" as api
+  database "Render Postgres\nPersistent Storage" as db
+
+  web --> api : HTTPS / REST
+  api --> db : PostgreSQL\nInternal connection
+}
+
+actor "Customer / Staff / Manager" as user
+
+user --> web : HTTPS 443
+workflow --> pipeline : Future CI/CD
+pipeline ..> registry : Image push (planned)
+registry ..> render : Image deployment (planned)
+
+
+note right of render
+  Production platform: Render
+
+  Health Check (agreed design):
+  - NestJS GET /health
+  - @nestjs/terminus
+  - API and PostgreSQL checks
+  - Render Health Check
+
+  Logging (agreed design):
+  - NestJS Logger
+  - stdout / stderr
+  - Render Dashboard Logs
+
+  Configuration:
+  - Render environment variables
+  - Secrets outside source code
+
+  Implementation: pending Task 5
+end note
+
+
+@enduml
