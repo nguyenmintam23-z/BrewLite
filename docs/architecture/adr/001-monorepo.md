@@ -1,10 +1,4 @@
 # ADR 001 – Quản lý mã nguồn theo mô hình Monorepo
-
-**Dự án:** BrewLite – Hệ thống quản lý và bán đồ uống  
-**Mã quyết định:** ADR-001  
-**Trạng thái:** Proposed  
-**Phạm vi:** Kiến trúc tổ chức mã nguồn và quản lý repository
-
 ---
 
 ## 1. Bối cảnh (Context)
